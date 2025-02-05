@@ -4,24 +4,22 @@
  */
 package u1.manejomemoria.modelo;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Boris Perez
  */
 public class Negocio {
     
-    private ArrayList<Persona> personas;
+    private Persona[] personas;
     private int indice;
     
     public Negocio(){
-        personas = new ArrayList<Persona>();
+        personas = new Persona[10];
         
     }
     
     public int obtenerCantidadPersonas(){
-        return personas.size();
+        return personas.length;
     }
     
     public String crearPersona(String nombre, int edad){
@@ -32,7 +30,9 @@ public class Negocio {
         int random = (int)(Math.random()*1000);
         p.setId(""+random);
         
-        personas.add(p);
+        buscarPosicionParaInsertar(p);
+        
+        imprimirPersonas();
         
         return p.getId();
     }
@@ -46,9 +46,8 @@ public class Negocio {
         return null;
     }
     
-    public Persona cargarPersonaIndice(int indice){
-        
-        return personas.get(indice);
+    public Persona cargarPersonaIndice(int indice){        
+        return personas[indice];
     }
 
     public void actualizarPersona(String id, String nombre, int edad) {
@@ -65,9 +64,24 @@ public class Negocio {
         for(Persona p : personas){
             if(p.getId().equals(id)){
                 Persona p1 = p;
-                personas.add(p1);
+                buscarPosicionParaInsertar(p1);
                 return;
             }
+        }
+    }
+    
+    private void buscarPosicionParaInsertar(Persona p){
+        for (int i = 0; i < obtenerCantidadPersonas(); i++) {
+            if(personas[i]==null){
+                personas[i] = p;
+            }
+        }
+    }
+    
+    private void imprimirPersonas(){
+        for (int i = 0; i < obtenerCantidadPersonas(); i++) {
+            System.out.println(personas[i]);
+            
         }
     }
     

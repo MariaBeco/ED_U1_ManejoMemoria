@@ -7,10 +7,7 @@ package u1.manejomemoria.controlador;
 import u1.manejomemoria.modelo.Negocio;
 import u1.manejomemoria.vistas.PrincipalVista;
 import u1.manejomemoria.modelo.Persona;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JFrame;
 
 /**
  *
@@ -121,15 +118,19 @@ public class PrincipalControlador {
         
         System.out.println("Actualizando combos");
         
+        // Se llena el combo cmbClonarIDSource
         DefaultComboBoxModel<String> modelo2 = (DefaultComboBoxModel<String>)frame.getCmbClonarIDSource().getModel();
         modelo2.addElement(id);
         
+        // Se llena el combo cmbActualizarID
         DefaultComboBoxModel<String> modelo3 = (DefaultComboBoxModel<String>)frame.getCmbActualizarID().getModel();
         modelo3.addElement(id);
         
+        // Se llena el combo cmbIgualarID
         DefaultComboBoxModel<String> modelo4 = (DefaultComboBoxModel<String>)frame.getCmbIgualarID().getModel();
         modelo4.addElement(id);        
         
+        // Se llena el combo cmbImprimirID
         int totalPersonas = negocio.obtenerCantidadPersonas();
         if(totalPersonas>0){
             DefaultComboBoxModel<String> modelo1 = (DefaultComboBoxModel<String>)frame.getCmbImprimirID().getModel();
