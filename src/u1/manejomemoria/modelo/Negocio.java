@@ -23,6 +23,15 @@ public class Negocio {
     }
     
     public String crearPersona(String nombre, int edad){
+
+        for (Persona p: personas){
+            
+             if(p != null && nombre.equalsIgnoreCase(p.getNombre())){
+                return "Error";
+             }
+            
+            }
+        
         Persona p = new Persona();
         p.setNombre(nombre);
         p.setEdad(edad);
